@@ -11,14 +11,13 @@ class riak::baseconfig {
 
   exec { "unset-sudo-requiretty":
     command => "/bin/sed -i 's/^Defaults.*requiretty/# Defaults requiretty/' /etc/sudoers",
-    unless => "/bin/grep -F '# Defaults requiretty' /etc/sudoers",
+    unless  => "/bin/grep -F '# Defaults requiretty' /etc/sudoers",
   }
 
   # System tuning
 
   mount { '/':
     ensure  => 'mounted',
-    # device  => '/dev/mapper/vg_i1riak03sc9-lv_root',
     dump    => '1',
     fstype  => 'ext4',
     options => 'noatime,data=writeback,barrier=0',
@@ -71,7 +70,7 @@ class riak::baseconfig {
      command => "/sbin/swapoff -a",
      subscribe => Package["riak"],
      refreshonly => "true",
-   } 
+   }
 
   # Change IO scheduler from cfq to deadline
 

@@ -35,7 +35,6 @@ class riak::service {
       path    => "/usr/bin:/usr/sbin:/bin:/usr/local/bin",
       unless  => "/usr/sbin/riak-admin member-status | grep ^valid.*$fqdn",
     }
-
   }
 
 }
