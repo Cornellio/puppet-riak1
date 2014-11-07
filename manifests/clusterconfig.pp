@@ -2,22 +2,20 @@
 #
 class riak::clusterconfig {
 
-  file { "/etc/riak/app.config":
-    ensure    => "present",
-    content   => template("riak/app.config.erb"),
-    owner     => "riak",
-    group     => "riak",
-    mode      => "0644",
-    notify => Service["riak"],
+  File {
+    ensure => 'present',
+    owner => 'riak',
+    group => 'riak',
+    mode  => '0644',
+    notify => Service['riak'],
   }
 
-  file { "/etc/riak/vm.args":
-    ensure    => "present",
-    content   => template("riak/vm.args.erb"),
-    owner     => "riak",
-    group     => "riak",
-    mode      => "0644",
-    notify => Service["riak"],
+  file { "$conf_dir/$conf_api":
+    content => template('riak/app.config.erb'),
+  }
+
+  file { "$conf_dir/$conf_vm":
+    content => template('riak/vm.args.erb'),
   }
 
 }
