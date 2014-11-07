@@ -1,14 +1,23 @@
 # Riak
 
-<!--toc-->
+#### Table of Contents
+
+1. [Overview](#overview)
+2. [Module Description](#module-description)
+3. [Setup](#setup)
+4. [Usage](#usage)
+5. [Reference](#reference)
+5. [Limitations](#limitations)
+6. [Development](#development)
+7. [Contributors](#contributors)
 
 ## Overview
 
 Riak is a high performance, distributed key/value data store.
 
-This module installs and configures a Riak cluster on RHEL distros. Riak and Erlang packages are installed via RPM from your existing yum repos. Linux performance tuning is performed as recommended by Basho and the module will authomatically join your nodes into a cluster. 
+This module installs and configures a Riak cluster on RHEL distros. Riak and Erlang packages are installed via RPM from your existing yum repos. Linux performance tuning is performed as recommended by Basho and the module will automatically join your nodes into a cluster.
 
-The module has been tested on RHEL/CentOS 6.4 using riak-1.4.8 and erlang-rebar-2.1.0. Compatibile with Puppet 2.7 or higher.
+The module has been tested on RHEL/CentOS 6.4 using riak-1.4.8 and erlang-rebar-2.1.0. Compatible with Puppet 2.7 or higher.
 
 The Riak packages need to be available in your existing yum repos.
 
@@ -16,7 +25,7 @@ The Riak packages need to be available in your existing yum repos.
 
 The class parameter `cluster_join_node` defines the host that all members of the cluster will join. All hosts that join this node will automatically be members of the same cluster. If this node has not yet been provisioned when Puppet runs on other nodes, the cluster join operation will silently fail. The cluster join will succeed on the next Puppet run as long as the Riak daemon is running on the `cluster_join_node`.
 
-Multipe Puppet runs may be necessary to bring all nodes into the cluster. If you ensure Riak has been provisioned on the root node before the other nodes, everything should work after one Puppet run.
+Multiple Puppet runs may be necessary to bring all nodes into the cluster. If you ensure Riak has been provisioned on the root node before the other nodes, everything should work after one Puppet run.
 
 ## Setup
 
@@ -74,11 +83,11 @@ The number of partitions that make up your Riak cluster is set by `ring_creation
 
 So far the module has only been used on RHEL/CentOS 6.4 using Puppet 2.7.
 
-Multipe Puppet runs may be necessary to bring all nodes into the cluster as described above. Linux I/O scheduler is only adjusted for the 3 first serial block devices detected and needs to be more generalized.
+Multiple Puppet runs may be necessary to bring all nodes into the cluster as described above. Linux I/O scheduler tuning is only adjusted for the 3 first serial block devices detected and needs to be more generalized.
 
 ## Development
 
-[Visit the repo on Github](https://github.com/Cornellio/puppet-riak)
+Visit the repo on [Github](https://github.com/Cornellio/puppet-riak)
 
 ## Contributors
 
