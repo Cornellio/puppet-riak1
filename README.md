@@ -59,7 +59,7 @@ root node, you could use this node definition:
 
 ### Parameters
 
-    cluster_join_node`
+    cluster_join_node
 
 The node to join when creating the cluster.  All nodes that
 you wish to make into a cluster should use the same value for this.
