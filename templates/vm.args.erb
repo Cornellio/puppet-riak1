@@ -1,5 +1,5 @@
 ## Name of the riak node
--name riak@<%= @fqdn %>
+-name riak@<%= @ipaddress %>
 
 ## Cookie for distributed erlang.  All nodes in the same cluster
 ## should use the same cookie or they will not be able to communicate.
@@ -59,6 +59,4 @@
 ## -ssl_dist_opt server_certfile "/etc/riak/erlserver.pem"
 
 ## End SSL distribution items, DO NOT DELETE OR EDIT THIS COMMENT
-+S 6:6
-+swt very_low
-+zdbbl 32768
+

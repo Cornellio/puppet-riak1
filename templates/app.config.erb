@@ -8,13 +8,13 @@
             %% By default the value is 5. If you anticipate a huge number of
             %% connections being initialised *simultaneously*, set this number
             %% higher.
-            {pb_backlog, 64},
+            %% {pb_backlog, 64},
              
             %% pb is a list of IP addresses and TCP ports that the Riak 
             %% Protocol Buffers interface will bind.
             {pb, [ {"<%= @ipaddress %>", 8087 } ]}
             ]},
-
+ 
  %% Riak Core config
  {riak_core, [
               %% Default location of ringstate
@@ -22,7 +22,7 @@
 
               %% Default ring creation size.  Make sure it is a power of 2,
               %% e.g. 16, 32, 64, 128, 256, 512 etc
-              {ring_creation_size, "<%= scope.lookupvar("riak::baseconfig::ring_creation_size") %>"},
+              {ring_creation_size, <%= scope.lookupvar("riak::ring_creation_size") %>},
 
               %% http is a list of IP addresses and TCP ports that the Riak
               %% HTTP interface will bind.
@@ -186,6 +186,13 @@
             %% least 3X the fsm_limit.
             {fsm_limit, 50000},
 
+            %% Uncomment to make non-paginated results be sorted the
+            %% same way paginated results are: by term, then key.
+            %% In Riak 1.4.* before 1.4.4, all results were sorted this way
+            %% by default, which can adversely affect performance in some cases.
+            %% Setting this to true emulates that behavior.
+            %% {secondary_index_sort_default, true},
+
             %% object_format controls which binary representation of a riak_object 
             %% is stored on disk.
             %% Current options are: v0, v1.
@@ -317,7 +324,7 @@
  %% riak_control config
  {riak_control, [
                 %% Set to false to disable the admin panel.
-                {enabled, true},
+                {enabled, false},
 
                 %% Authentication style used for access to the admin
                 %% panel. Valid styles are 'userlist' <TODO>.
@@ -326,7 +333,7 @@
                 %% If auth is set to 'userlist' then this is the
                 %% list of usernames and passwords for access to the
                 %% admin panel.
-                {userlist, [{"admin", "nine.ball"}
+                {userlist, [{"user", "pass"}
                            ]},
 
                 %% The admin panel is broken up into multiple
