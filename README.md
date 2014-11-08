@@ -13,9 +13,9 @@
 
 ## Overview
 
-Riak is a high performance, distributed key/value data store.
+Riak is a high performance, distributed key/value data store. 
 
-This module installs and configures a Riak cluster on RHEL distros. Riak and Erlang packages are installed via RPM from your existing yum repos. Linux performance tuning is performed as recommended by Basho and the module will automatically join your nodes into a cluster.
+This module installs and configures a Riak cluster on RHEL distros. Riak packages are installed from your existing yum repos and Linux is tuned for performance as recommended by Basho. The module will join your nodes into a cluster.
 
 The module has been tested on RHEL/CentOS 6.4 using riak-1.4.8 and erlang-rebar-2.1.0. Compatible with Puppet 2.7 or higher.
 
@@ -29,10 +29,16 @@ Multiple Puppet runs may be necessary to bring all nodes into the cluster. If yo
 
 ## Setup
 
-Ensure the following packages are available in your configured yum repos.
+### Package Repositories
+
+As to avoid external dependencies, this module is designed to use internal yum repos, therefore ensure the following packages are available in your configured yum repos.
 
 * riak-1.4.8
 * erlang-rebar-2.1.0
+
+### Name Resolution
+
+Working name resolution is required. Ensure that each host can resolve itself and the host that's specified by the `cluster_join_node` parameter.
 
 ### What Riak affects
 

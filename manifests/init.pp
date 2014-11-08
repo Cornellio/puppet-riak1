@@ -2,7 +2,7 @@
 #    
 # == Class: riak
 #
-# Installs and configures a Riak cluster on RHEL/CentOS
+# Installs and configures a Riak cluster on RHEL distros
 #
 # - Installs Riak and Erlang
 # - Ensures Riak daemon is running
@@ -40,7 +40,7 @@
 #
 # === Author
 #
-# Pete Cornell <pete.cornell@virginamerica.com>
+# Pete Cornell <https://github.com/Cornellio/puppet-riak>
 #
 class riak ( 
 
@@ -51,10 +51,11 @@ class riak (
   $ring_creation_size  = $riak::params::ring_creation_size
 
 ) inherits riak::params {
-  
+
   class {'riak::install':} ->
   class {'riak::baseconfig':} ->
   class {'riak::clusterconfig':} ->
-  class {'riak::service':}
+  class {'riak::service':} ~>
+  class {'riak::clusterjoin':}
 
 }

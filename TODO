@@ -1,0 +1,3 @@
+  * Expose more configs to class parameters
+  * Enable Riak control via class parameter
+  * Fix any execs that run repeatedly to trigger only when needed

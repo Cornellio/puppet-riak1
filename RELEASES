@@ -1,0 +1,13 @@
+
+v1.0.0 - First release
+v1.0.1 - Update docs and formatting
+v1.0.2 - Update docs and formatting
+v1.0.3 - Update docs and formatting
+v1.1.0:
+Several improvements:
+  * Implement params pattern
+  * Convert variables to class parameters
+  * Convert the execs for cluster joins opertion to refreshonly
+  * Rename parameter `cluster_root_node` to `cluster_join_node`
+  * Code style improvements
+  * Fixed problems with vm.args and app.config
