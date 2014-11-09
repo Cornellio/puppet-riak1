@@ -56,8 +56,11 @@ Performance optimizations are made as recommended by Basho:
   
 ## Usage
 
-To create a 5 node cluster and define riak01.domain.local as the
-root node, you could use this node definition:
+To create a 5 node cluster and make all nodes join `riak01.domain.local`:
+
+First, provision riak on `riak01.domain.local`. Riak must be ready to accept members into the cluster on this system.
+
+Create a node definition like so:
 
     node /^riak0[1-5]\.domain\.local$/  {
       class { 'riak': cluster_join_node => 'riak01.domain.local', }
@@ -97,4 +100,4 @@ Visit the repo on [Github](https://github.com/Cornellio/puppet-riak)
 
 ## Contact
 
-Pete Cornell / pete.cornell@virginamerica.com / @9Dreamer / https://github.com/Cornellio
+Pete Cornell / @9Dreamer / https://github.com/Cornellio
