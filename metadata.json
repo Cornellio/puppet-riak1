@@ -7,6 +7,18 @@
   "source": "https://github.com/Cornellio/puppet-riak",
   "project_page": "https://github.com/Cornellio/puppet-riak",
   "issues_url": "https://github.com/Cornellio/puppet-riak",
+  "tags": ["riak", "nosql", "database", "cluster", "rhel", "centos", "high performance computing"],
+  "operatingsystem_support": [
+    {
+    "operatingsystem":"RedHat",
+    "operatingsystemrelease":[ "5", "6" ]
+    },
+    {
+    "operatingsystem":"CentOS",
+    "operatingsystemrelease":[ "5", "6" ]
+    },
+
+  ]
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",

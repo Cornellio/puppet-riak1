@@ -87,14 +87,14 @@ The number of partitions that make up your Riak cluster is set by `ring_creation
 
 ## Limitations
 
-So far the module has only been used on RHEL/CentOS 6.4 using Puppet 2.7.
-
-Multiple Puppet runs may be necessary to bring all nodes into the cluster as described above. Linux I/O scheduler tuning is only adjusted for the 3 first serial block devices detected and needs to be more generalized.
+* Only supported on RHEL 6 distros
+* The `cluster_join_node` needs to be provisioned before any other nodes join the cluster
+* The Linux I/O scheduler is only tuned on the 3 first serial block devices detected; needs to be more generalized
 
 ## Development
 
 Visit the repo on [Github](https://github.com/Cornellio/puppet-riak)
 
-## Contributors
+## Contact
 
-Pete Cornell
+Pete Cornell / pete.cornell@virginamerica.com / @9Dreamer / https://github.com/Cornellio

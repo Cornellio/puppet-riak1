@@ -1,3 +1,5 @@
+  * add conditional to cluster join operation:
+    - if '/usr/bin/nmap -p 8098 "${cluster_join_node}" | grep "tcp open"'
   * Expose more configs to class parameters
   * Enable Riak control via class parameter
   * Fix any execs that run repeatedly to trigger only when needed
