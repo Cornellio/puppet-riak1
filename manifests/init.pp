@@ -1,5 +1,5 @@
 # @version $Id: $
-#    
+#
 # == Class: riak
 #
 # Installs and configures a Riak cluster on RHEL distros
@@ -10,13 +10,13 @@
 #   - Sets kernel parameters and ulimits
 #   - Changes I/O scheduler from CFQ to Deadline
 # - Joins servers into cluster
-# 
+#
 # === Parameters
 #
 # [*cluster_join_node*]
-# 
+#
 #	The node to join when creating the cluster.  All nodes that
-#	you wish to make into a cluster should use the same value for this. 
+#	you wish to make into a cluster should use the same value for this.
 #
 # [*sysctl_fs_file_max*] - default = 65536
 # [*ulimits_nofile_soft*] - default = 16000
@@ -25,10 +25,10 @@
 # System performance tuning is set via kernel parameters and ulimits.
 #
 # [*ring_creation_size*] - default = 128
-# 
+#
 # Ring creation size must be a multiple of 2. Use a large value such as
 # 512 if you plan on scaling to large clusters.
-# 
+#
 # === Examples
 #
 #	To create a 5 node cluster and define riak01-sc9.virginam.com as the
@@ -42,7 +42,7 @@
 #
 # Pete Cornell <https://github.com/Cornellio/puppet-riak>
 #
-class riak ( 
+class riak (
 
   $cluster_join_node,
   $sysctl_fs_file_max  = $riak::params::sysctl_fs_file_max,
