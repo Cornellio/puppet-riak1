@@ -6,7 +6,7 @@ class riak::baseconfig {
 
   exec { 'unset-sudo-requiretty':
     command => "/bin/sed -i 's/^Defaults.*requiretty/# Defaults requiretty/' /etc/sudoers",
-    unless  => "/bin/grep -F '# Defaults requiretty' /etc/sudoers",
+    unless  => "/bin/grep '# Defaults.*requiretty' /etc/sudoers",
   }
 
   # System tuning
