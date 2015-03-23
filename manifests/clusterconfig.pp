@@ -10,11 +10,11 @@ class riak::clusterconfig {
     notify => Service['riak'],
   }
 
-  file { "$conf_dir/$conf_api":
+  file { "${riak::conf_dir}/${riak::conf_api}":
     content => template('riak/app.config.erb'),
   }
 
-  file { "$conf_dir/$conf_vm":
+  file { "${riak::conf_dir}/${riak::conf_vm}":
     content => template('riak/vm.args.erb'),
   }
 

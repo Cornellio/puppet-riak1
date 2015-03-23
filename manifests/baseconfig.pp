@@ -53,19 +53,19 @@ class riak::baseconfig {
         "set domain[1][. = '*'] *",
         "set domain[1][. = '*']/type soft",
         "set domain[1][. = '*']/item nofile",
-        "set domain[1][. = '*']/value ${ulimits_nofile_soft}",
+        "set domain[1][. = '*']/value ${riak::ulimits_nofile_soft}",
         "set domain[2][. = '*'] *",
         "set domain[2][. = '*']/type hard",
         "set domain[2][. = '*']/item nofile",
-        "set domain[2][. = '*']/value ${ulimits_nofile_hard}",
+        "set domain[2][. = '*']/value ${riak::ulimits_nofile_hard}",
       ],
-   }
+  }
 
   exec { 'swap-disable':
-     command     => '/sbin/swapoff -a',
-     subscribe   => Package['riak'],
-     refreshonly => true,
-   }
+    command     => '/sbin/swapoff -a',
+    subscribe   => Package['riak'],
+    refreshonly => true,
+  }
 
   # Change IO scheduler from cfq to deadline
 
