@@ -2,12 +2,12 @@
   "name": "cornellio-riak",
   "version": "1.1.0",
   "author": "Pete Cornell",
-  "summary": "Riak is a high performance, distributed key/value data store. This module installs and configures a Riak cluster on RHEL distros. Riak packages are installed from your existing yum repos and Linux is tuned for performance as recommended by Basho. The module will join your nodes into a cluster.",
+  "summary": "Deploy a Riak Cluster",
   "license": "MIT",
   "source": "https://github.com/Cornellio/puppet-riak",
   "project_page": "https://github.com/Cornellio/puppet-riak",
   "issues_url": "https://github.com/Cornellio/puppet-riak",
-  "tags": ["riak", "nosql", "database", "cluster", "rhel", "centos", "high performance computing"],
+  "tags": ["riak", "nosql", "database", "cassandra", "erlang", "dynamodb", "storage" ],
   "operatingsystem_support": [
     {
     "operatingsystem":"RedHat",
