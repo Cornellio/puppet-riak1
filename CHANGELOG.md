@@ -20,10 +20,15 @@
 
 ## v1.1.0
 
-
 * Implement params pattern
 * Convert variables to class parameters
 * Convert the execs for cluster joins operation to refreshonly
 * Rename parameter `cluster_root_node` to `cluster_join_node`
 * Code style improvements
 * Fixed problems with vm.args and app.config
+
+## v.1.1.1
+
+* Add more class parameters
+* Code style improvements
+
