@@ -23,7 +23,7 @@ class riak::baseconfig {
   augeas { 'kernel-params':
     context => '/files/etc/sysctl.conf',
     changes => [
-      "set fs.file-max[1] ${sysctl_fs_file_max}",
+      "set fs.file-max[1] ${riak::sysctl_fs_file_max}",
       'set vm.swappiness[1] 0',
       'set net.ipv4.tcp_max_syn_backlog[1] 40000',
       'set net.core.somaxconn[1] 4000',

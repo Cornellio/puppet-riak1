@@ -20,6 +20,7 @@
 
 ## v1.1.0
 
+
 * Implement params pattern
 * Convert variables to class parameters
 * Convert the execs for cluster joins operation to refreshonly
