@@ -133,12 +133,7 @@ Password for Riak control
 
 ## Limitations
 
-
-If this node has not yet been provisioned when Puppet runs on other nodes, the cluster join operation will silently fail. The cluster join will succeed on future Puppet runs as long as the Riak daemon is running on the `cluster_join_node`.
-
-Multiple Puppet runs may be necessary to bring all nodes into the cluster. If you ensure Riak has been provisioned on the host cited by `cluster_join_node` before the other nodes, everything should work after one Puppet run.
-
-* If the system cited by `cluster_join_node` does not yet have Riak running when a host attempts to join the cluster, the cluster join operation will silently fail. When the system becomes available, subsequent runs will work.
+* Multiple Puppet runs may be necessary to bring all nodes into the cluster. If you ensure Riak has been provisioned on the host cited by `cluster_join_node` before the other nodes, the cluster join operations should work on one Puppet run.
 * The Linux I/O scheduler is only tuned on the 3 first serial block devices detected. Needs to be generalized.
 * Only tested on RHEL 6 distros so far
 
