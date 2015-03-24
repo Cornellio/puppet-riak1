@@ -15,23 +15,21 @@
 
 Riak is a high performance, distributed key/value data store released by [Basho.](http://basho.com/riak/)
 
-This module deploys a Riak cluster on Red Hat distributions. Since it's designed to automate the setup of an entire cluster it can be applied to multiple hosts and will handle the operations necessary to create the cluster, including `plan`, `commit` and `join`. The module uses your existing yum repos to install Riak and Erlang and Linux will be tuned for performance as recommended by Basho.
-
-The module has been tested on RHEL/CentOS 6.4 using riak-1.4.8 and erlang-rebar-2.1.0. Compatible with Puppet 2.7 or higher.
-
-The Riak packages need to be available in your existing yum repos.
+The module is designed with production systems in mind and aims to fully automate the deployment of a Riak cluster and tune your systems for optimal performance.
 
 ## Module Description
 
-The class parameter `cluster_join_node` defines the host that all members of the cluster will join. All hosts that join this node will automatically be members of the same cluster. If this node has not yet been provisioned when Puppet runs on other nodes, the cluster join operation will silently fail. The cluster join will succeed on the next Puppet run as long as the Riak daemon is running on the `cluster_join_node`.
+This module deploys a Riak cluster on Red Hat distributions. It's designed to automate the setup of an entire cluster and should be applied to multiple hosts. It will handle the operations necessary to create the cluster, including `plan`, `commit` and `join`. The module uses your existing yum repos to install Riak and Erlang and Linux will be tuned for performance as recommended by Basho.
 
-Multiple Puppet runs may be necessary to bring all nodes into the cluster. If you ensure Riak has been provisioned on the host cited by `cluster_join_node` before the other nodes, everything should work after one Puppet run.
+The module has been tested on RHEL/CentOS 6.4 using riak-1.4.8 and erlang-rebar-2.1.0. Compatible with Puppet 2.7 or higher.
+
+The class parameter `cluster_join_node` defines the host that all members of the cluster will join. All hosts that join this node will automatically be members of the same cluster.
 
 ## Setup
 
 ### Package Repositories
 
-As to avoid external dependencies, this module is designed to use internal yum repos, therefore ensure the following packages are available in your configured yum repos.
+To avoid external dependencies this module is designed to use your existing yum repos, therefore ensure you have the following packages available:
 
 * riak-1.4.8
 * erlang-rebar-2.1.0
@@ -71,63 +69,78 @@ Create a node definition like so:
 
 ### Parameters
 
-#### `cluster_join_node`
+    cluster_join_node
+    required: yes
 
 The node to join when creating the cluster.  All nodes that
 you wish to make into a cluster should use the same value for this. The system you select is arbitrary and can be any host that will become part of the cluster.
 
 #### Kernel Tuning Parameters
 
-Increasing max file handles via sysctl and ulimits
+Set max file handles via sysctl and ulimits
 
-`sysctl_fs_file_max`
-default: 65536
+    sysctl_fs_file_max
+    default: 65536
 
-`ulimits_nofile_soft`
-default: 16000
+    ulimits_nofile_soft
+    default: 16000
 
-`ulimits_nofile_hard`
-default: 20000
+    ulimits_nofile_hard
+    default: 20000
 
-#### `ring_creation_size`
+#### Riak Parameters
 
-The number of partitions that make up your Riak cluster. Must be a multipel of 2. Check [cluster capacity planning](http://docs.basho.com/riak/1.3.1/references/appendices/Cluster-Capacity-Planning/#Ring-Size-Number-of-Partitions) docs for details.
-default: 128
+    ring_creation_size
+    default: 128
 
-#### `riak_api_pb_backlog`
+The number of partitions that make up your Riak cluster. Must be a multiple of 2. Check [cluster capacity planning](http://docs.basho.com/riak/1.3.1/references/appendices/Cluster-Capacity-Planning/#Ring-Size-Number-of-Partitions) docs for details.
+
+    riak_api_pb_backlog
+    default: 64
+
 Maximum length to which the queue of pending connections may grow.
-default: 64
 
-#### `riak_search`
+    riak_search
+    default: false
+
 To enable Search functionality set this 'true'. Not recommended on production systems.
-default: false
 
-#### `riak_sysmon_process_limit`
+    riak_sysmon_process_limit
+    default: 30
+
 Sysmon process limit.
-default: 30
 
-#### `riak_control_enabled`
+    riak_control_enabled
+    default: false
+
 Whether to enable the Riak control GUI
-default: false
 
-#### `riak_control_username`
+    riak_control_username
+    default: admin
+
 Username for Riak control
-default: admin
 
-#### `riak_control_password`
+    riak_control_password`
+    default: pass
+
 Password for Riak control
-default: pass
 
 ## Reference
 
 * [Basho](http://basho.com)
 * [Github](https://github.com/Cornellio/puppet-riak)
+* [Puppet Forge](https://forge.puppetlabs.com/cornellio/riak)
 
 ## Limitations
 
-* Only supported on RHEL 6 distros
-* If the system cited by `cluster_join_node` does not yet have Riak running when a host attempts to join the cluster, the cluster join operation will silently fail.
-* The Linux I/O scheduler is only tuned on the 3 first serial block devices detected; needs to be more generalized
+
+If this node has not yet been provisioned when Puppet runs on other nodes, the cluster join operation will silently fail. The cluster join will succeed on future Puppet runs as long as the Riak daemon is running on the `cluster_join_node`.
+
+Multiple Puppet runs may be necessary to bring all nodes into the cluster. If you ensure Riak has been provisioned on the host cited by `cluster_join_node` before the other nodes, everything should work after one Puppet run.
+
+* If the system cited by `cluster_join_node` does not yet have Riak running when a host attempts to join the cluster, the cluster join operation will silently fail. When the system becomes available, subsequent runs will work.
+* The Linux I/O scheduler is only tuned on the 3 first serial block devices detected. Needs to be generalized.
+* Only tested on RHEL 6 distros so far
 
 ## Development
 
@@ -135,4 +148,4 @@ Visit the repo on [Github](https://github.com/Cornellio/puppet-riak)
 
 ## Contact
 
-Pete Cornell / @9Dreamer / https://github.com/Cornellio
+Pete Cornell / @9Dreamer / https://github.com/Cornellio / http://cornellio.net
