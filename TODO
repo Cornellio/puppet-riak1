@@ -1,3 +1,9 @@
   * add conditional to cluster join operation:
     - if '/usr/bin/nmap -p 8098 "${cluster_join_node}" | grep "tcp open"'
   * Expose more configs as class parameters
+  * Add tests
+  * Update for Riak 2
+  * Expand OS support (debian, rhel 7)
+  * Make more generic
+  * Handle external repos
+  * Remove performance tuning to separate module or make optional
