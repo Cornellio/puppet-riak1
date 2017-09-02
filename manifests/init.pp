@@ -49,7 +49,19 @@
 #
 # Pete Cornell <https://github.com/Cornellio/puppet-riak>
 #
-class riak ($cluster_join_node) inherits riak::params {
+class riak (
+  $cluster_join_node,
+  $sysctl_fs_file_max        = $::riak::params::$sysctl_fs_file_max,
+  $ulimits_nofile_soft       = $::riak::params::$ulimits_nofile_soft,
+  $ulimits_nofile_hard       = $::riak::params::$ulimits_nofile_hard,
+  $ring_creation_size        = $::riak::params::$ring_creation_size,
+  $riak_api_pb_backlog       = $::riak::params::$riak_api_pb_backlog,
+  $riak_search               = $::riak::params::$riak_search,
+  $riak_sysmon_process_limit = $::riak::params::$riak_sysmon_process_limit,
+  $riak_control_enabled      = $::riak::params::$riak_control_enabled,
+  $riak_control_username     = $::riak::params::$riak_control_username,
+  $riak_control_password     = $::riak::params::$riak_control_password,
+  ) inherits riak::params {
 
   class {'riak::install':} ->
   class {'riak::baseconfig':} ->
