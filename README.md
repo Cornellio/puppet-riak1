@@ -143,4 +143,4 @@ Visit the repo on [Github](https://github.com/Cornellio/puppet-riak)
 
 ## Contact
 
-Pete Cornell / @9Dreamer / https://github.com/Cornellio / http://cornellio.net
+Pete Cornell / @9Dreamer / https://github.com/Cornellio
